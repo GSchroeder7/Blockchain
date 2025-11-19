@@ -169,7 +169,7 @@ function App() {
         }}
       />
 
-      <h1>SHA-1 Blockchain Demo (Text Messages)</h1>
+      <h1>GhoseCoin - Blockchain Implementation</h1>
 
       {status && (
         <p>
@@ -189,9 +189,38 @@ function App() {
         {/* Left column: wallet, tx, mining, pending */}
         <div style={{ flex: 1, minWidth: 0 }}>
           {/* Wallet section */}
-          <section style={{ marginBottom: "1.5rem" }}>
-            <h2>Wallet</h2>
-            <button type="button" onClick={handleNewWallet}>
+          <section
+            style={{
+              marginBottom: "1.5rem",
+              border: "1px solid #6c6e72ff",
+              backgroundColor: "#302828ff",
+              borderRadius: "8px",
+            }}
+          >
+            <h2
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+              }}
+            >
+              Wallet
+            </h2>
+            <button
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+
+                border: "2px solid rgb(45, 190, 210)",
+                backgroundColor: "#6c6e72ff",
+                borderRadius: "8px",
+              }}
+              type="button"
+              onClick={handleNewWallet}
+            >
               Generate Wallet
             </button>
 
@@ -199,8 +228,11 @@ function App() {
               <div
                 style={{
                   marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
                   textAlign: "left",
-                  wordBreak: "break-all", // allow long strings to wrap
+                  wordBreak: "break-all",
                 }}
               >
                 <p>
@@ -220,10 +252,34 @@ function App() {
           </section>
 
           {/* New message transaction */}
-          <section style={{ marginBottom: "1.5rem" }}>
-            <h2>New Message Transaction</h2>
+          <section
+            style={{
+              marginBottom: "1.5rem",
+              border: "1px solid #6c6e72ff",
+              backgroundColor: "#302828ff",
+              borderRadius: "8px",
+            }}
+          >
+            <h2
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+              }}
+            >
+              New Message Transaction
+            </h2>
             <form onSubmit={signAndSendTransaction}>
-              <div style={{ marginBottom: "0.5rem", textAlign: "left" }}>
+              <div
+                style={{
+                  marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
+                  textAlign: "left",
+                }}
+              >
                 <label>Recipient public key:</label>
                 <br />
                 <input
@@ -234,7 +290,15 @@ function App() {
                   }
                 />
               </div>
-              <div style={{ marginBottom: "0.5rem", textAlign: "left" }}>
+              <div
+                style={{
+                  marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
+                  textAlign: "left",
+                }}
+              >
                 <label>Message:</label>
                 <br />
                 <input
@@ -246,42 +310,121 @@ function App() {
                   }
                 />
               </div>
-              <button type="submit" style={{ marginTop: "0.5rem" }}>
+              <button
+                type="submit"
+                style={{
+                  marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
+                  border: "2px solid rgb(45, 190, 210)",
+                  backgroundColor: "#6c6e72ff",
+                  borderRadius: "8px",
+                }}
+              >
                 Send message transaction
               </button>
             </form>
           </section>
 
           {/* Mining */}
-          <section style={{ marginBottom: "1.5rem" }}>
-            <h2>Mine Block</h2>
-            <div style={{ textAlign: "left" }}>
+          <section
+            style={{
+              marginBottom: "1.5rem",
+              border: "1px solid #6c6e72ff",
+              backgroundColor: "#302828ff",
+              borderRadius: "8px",
+            }}
+          >
+            <h2
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+              }}
+            >
+              Mine Block
+            </h2>
+            <div
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+                textAlign: "left",
+              }}
+            >
               <label>Miner address (your public key):</label>
               <br />
               <input
-                style={{ width: "100%" }}
+                style={{
+                  width: "100%",
+                }}
                 value={minerAddress}
                 onChange={(e) => setMinerAddress(e.target.value)}
               />
             </div>
-            <button onClick={handleMine} style={{ marginTop: "0.75rem" }}>
+            <button
+              onClick={handleMine}
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+                border: "2px solid rgb(45, 190, 210)",
+                backgroundColor: "#6c6e72ff",
+                borderRadius: "8px",
+              }}
+            >
               Mine pending transactions
             </button>
           </section>
 
           {/* Pending transactions */}
-          <section style={{ marginBottom: "1.5rem" }}>
-            <h2>Pending Transactions</h2>
-            {pending.length === 0 && <p>None</p>}
+          <section
+            style={{
+              marginBottom: "1.5rem",
+              border: "1px solid #6c6e72ff",
+              backgroundColor: "#302828ff",
+            }}
+          >
+            <h2
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+              }}
+            >
+              Pending Transactions
+            </h2>
+            {pending.length === 0 && (
+              <p
+                style={{
+                  marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
+                }}
+              >
+                None
+              </p>
+            )}
             {pending.map((tx, idx) => (
               <div
                 key={idx}
                 style={{
-                  border: "1px solid #ccc",
+                  border: "2px solid rgb(45, 190, 210)",
+                  backgroundColor: "#121111",
+                  borderRadius: "8px",
                   padding: "0.5rem",
-                  marginBottom: "0.5rem",
+                  marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
                   textAlign: "left",
-                  wordBreak: "break-all", // 👈 this keeps it in the column
+                  wordBreak: "break-all",
                 }}
               >
                 <p>
@@ -299,18 +442,41 @@ function App() {
         </div>
 
         {/* Right column: blockchain */}
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div
+          style={{
+            flex: 1,
+            minWidth: 0,
+            marginBottom: "1.5rem",
+            border: "1px solid #6c6e72ff",
+            backgroundColor: "#302828ff",
+            borderRadius: "8px",
+          }}
+        >
           <section>
-            <h2>Blockchain</h2>
+            <h2
+              style={{
+                marginTop: "0.75rem",
+                marginBottom: "0.75rem",
+                marginLeft: "0.75rem",
+                marginRight: "0.75rem",
+              }}
+            >
+              Blockchain
+            </h2>
             {chain.map((block) => (
               <div
                 key={block.index}
                 style={{
-                  border: "1px solid #666",
+                  border: "2px solid rgb(45, 190, 210)",
+                  backgroundColor: "#121111",
+                  borderRadius: "8px",
                   padding: "0.75rem",
-                  marginBottom: "0.75rem",
                   textAlign: "left",
                   wordBreak: "break-all",
+                  marginTop: "0.75rem",
+                  marginBottom: "0.75rem",
+                  marginLeft: "0.75rem",
+                  marginRight: "0.75rem",
                 }}
               >
                 <p>
