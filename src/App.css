@@ -6,6 +6,45 @@
   text-align: left; /* optional, since your UI is more form-like */
 }
 
+body {
+  margin: 0;
+  background-color: #121111;
+  color: rgb(45, 190, 210);
+  font-family: sans-serif;
+}
+
+/* App layout */
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Top banner */
+
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 2px solid #333;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+  border: 1px solid #6c6e72ff;
+  background-color: #302828ff;
+  border-radius: 8px;
+}
+
+.banner-title {
+  margin: 0;
+  color: rgb(45, 190, 210);
+  font-size: 1.8rem;
+}
+
+/* Logo spin */
+
 @keyframes ghose-spin {
   from {
     transform: rotate(0deg);
@@ -17,15 +56,125 @@
 
 .ghose-logo {
   animation: ghose-spin infinite 20s linear;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
 }
+
+/* Status text */
+
+.status {
+  margin: 0.5rem 0;
+}
+
+/* Two-column layout */
+
+.two-column {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Panels / cards */
+
+.panel {
+  margin-bottom: 1.5rem;
+  border: 1px solid #6c6e72ff;
+  background-color: #302828ff;
+  border-radius: 8px;
+}
+
+.panel-heading {
+  margin: 0.75rem;
+}
+
+.panel-body {
+  margin: 0.75rem;
+}
+
+/* Buttons */
+
+.btn-primary {
+  margin: 0.75rem;
+  border: 2px solid rgb(45, 190, 210);
+  background-color: #6c6e72ff;
+  border-radius: 8px;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Form fields */
+
+.field-group {
+  margin: 0.75rem;
+  text-align: left;
+}
+
+.field-input {
+  width: 100%;
+}
+
+/* Wallet keys */
+
+.wallet-keys {
+  margin: 0.75rem;
+  text-align: left;
+  word-break: break-all;
+}
+
+.wallet-keys code {
+  word-break: break-all;
+}
+
+/* Pending transactions */
+
+.pending-empty {
+  margin: 0.75rem;
+}
+
+.pending-card {
+  border: 2px solid rgb(45, 190, 210);
+  background-color: #121111;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin: 0.75rem;
+  text-align: left;
+  word-break: break-all;
+}
+
+/* Blockchain right column */
+
+.right-column-panel {
+  margin-bottom: 1.5rem;
+  border: 1px solid #6c6e72ff;
+  background-color: #302828ff;
+  border-radius: 8px;
+}
+
+/* Individual block tiles */
+
+.block-card {
+  border: 2px solid rgb(45, 190, 210);
+  background-color: #121111;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: left;
+  word-break: break-all;
+  margin: 0.75rem;
+}
+
+/* Optional utility */
 
 .card {
   padding: 2em;
-}
-
-body {
-  margin: 0;
-  background-color: #121111; /* dark mode example */
-  color: rgb(45, 190, 210); /* optional */
-  font-family: sans-serif;
 }
