@@ -1,8 +1,8 @@
 import time
 import json
+import random
 from dataclasses import dataclass, asdict
 from typing import List, Optional
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from ecdsa import SigningKey, VerifyingKey, SECP256k1, BadSignatureError
@@ -295,7 +295,8 @@ class Blockchain:
 
 app = Flask(__name__)
 CORS(app)  # allow requests from the React dev server
-blockchain = Blockchain(difficulty=3)  # easier difficulty for demo
+DIFFICULTY = random.randint(1, 3)  # tweak range as you like
+blockchain = Blockchain(difficulty=DIFFICULTY)
 
 @app.route("/wallets/new", methods=["GET"])
 def new_wallet():

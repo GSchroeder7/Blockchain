@@ -49,6 +49,7 @@ function App() {
   }, []);
 
   // --- Wallet ---
+
   const handleNewWallet = async () => {
     try {
       const res = await fetch(`${API_BASE}/wallets/new`);
@@ -179,8 +180,7 @@ function App() {
             {wallet.public_key && (
               <div className="wallet-keys">
                 <p>
-                  <strong>Public key:</strong>{" "}
-                  <code>{wallet.public_key}</code>
+                  <strong>Public key:</strong> <code>{wallet.public_key}</code>
                 </p>
                 <p>
                   <strong>Private key:</strong>{" "}
@@ -243,9 +243,7 @@ function App() {
           {/* Pending transactions */}
           <section className="panel">
             <h2 className="panel-heading">Pending Transactions</h2>
-            {pending.length === 0 && (
-              <p className="pending-empty">None</p>
-            )}
+            {pending.length === 0 && <p className="pending-empty">None</p>}
             {pending.map((tx, idx) => (
               <div key={idx} className="pending-card">
                 <p>
@@ -280,8 +278,7 @@ function App() {
                   <code>{block.previous_hash}</code>
                 </p>
                 <p>
-                  <strong>Hash (SHA-1):</strong>{" "}
-                  <code>{block.hash}</code>
+                  <strong>Hash (SHA-1):</strong> <code>{block.hash}</code>
                 </p>
                 <p>
                   <strong>Nonce:</strong> {block.nonce}
@@ -291,8 +288,32 @@ function App() {
                 </p>
                 <ul>
                   {block.transactions.map((tx, idx) => (
-                    <li key={idx}>
-                      {tx.sender}→{tx.recipient}: "{tx.message}"
+                    <li
+                      key={idx}
+                      className="trans-card"
+                      style={{ marginBottom: "0.75rem" }}
+                    >
+                      <div style={{ wordBreak: "break-all" }}>
+                        <strong>From:</strong>
+                        <br />
+                        {tx.sender}
+                      </div>
+
+                      <div
+                        style={{
+                          marginTop: "0.25rem",
+                          wordBreak: "break-all",
+                        }}
+                      >
+                        <strong>To:</strong>
+                        <br />
+                        {tx.recipient}
+                      </div>
+
+                      <div style={{ marginTop: "0.25rem" }}>
+                        <strong>Message:</strong>
+                        <br />"{tx.message}"
+                      </div>
                     </li>
                   ))}
                 </ul>
