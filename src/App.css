@@ -1,15 +1,15 @@
 #root {
   width: 100%;
-  max-width: none;  /* remove the 1280px cap */
-  margin: 0;        /* no horizontal centering */
-  padding: 1.5rem;  /* or whatever padding you like */
+  max-width: none; /* remove the 1280px cap */
+  margin: 0; /* no horizontal centering */
+  padding: 1.5rem; /* or whatever padding you like */
   text-align: left; /* optional, since your UI is more form-like */
 }
 
 body {
   margin: 0;
-  background-color: #121111;
-  color: rgb(45, 190, 210);
+  background-color: rgb(30, 30, 30);
+  color: rgb(120, 198, 227);
   font-family: sans-serif;
 }
 
@@ -33,9 +33,11 @@ body {
   box-sizing: border-box;
   margin-bottom: 1.5rem;
   border: 1px solid #6c6e72ff;
-  background-color: #302828ff;
+  background-color: rgb(50, 50, 50);
   border-radius: 8px;
 }
+
+
 
 .banner-title {
   margin: 0;
@@ -89,7 +91,7 @@ body {
 .panel {
   margin-bottom: 1.5rem;
   border: 1px solid #6c6e72ff;
-  background-color: #302828ff;
+  background-color: rgb(50, 50, 50);
   border-radius: 8px;
 }
 
@@ -106,7 +108,7 @@ body {
 .btn-primary {
   margin: 0.75rem;
   border: 2px solid rgb(45, 190, 210);
-  background-color: #6c6e72ff;
+  background-color: rgb(0, 0, 0);
   border-radius: 8px;
   padding: 0.25rem 0.75rem;
   cursor: pointer;
@@ -144,7 +146,17 @@ body {
 
 .pending-card {
   border: 2px solid rgb(45, 190, 210);
-  background-color: #121111;
+  background-color: rgb(30, 30, 30);
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin: 0.75rem;
+  text-align: left;
+  word-break: break-all;
+}
+
+.trans-card {
+  border: 2px solid rgb(45, 190, 210);
+  background-color: rgb(50, 50, 50);
   border-radius: 8px;
   padding: 0.5rem;
   margin: 0.75rem;
@@ -157,7 +169,7 @@ body {
 .right-column-panel {
   margin-bottom: 1.5rem;
   border: 1px solid #6c6e72ff;
-  background-color: #302828ff;
+  background-color: rgb(50, 50, 50);
   border-radius: 8px;
 }
 
@@ -165,7 +177,7 @@ body {
 
 .block-card {
   border: 2px solid rgb(45, 190, 210);
-  background-color: #121111;
+  background-color: rgb(30, 30, 30);
   border-radius: 8px;
   padding: 0.75rem;
   text-align: left;
