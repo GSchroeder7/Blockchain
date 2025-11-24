@@ -1,9 +1,9 @@
 #root {
   width: 100%;
-  max-width: none; /* remove the 1280px cap */
-  margin: 0; /* no horizontal centering */
-  padding: 1.5rem; /* or whatever padding you like */
-  text-align: left; /* optional, since your UI is more form-like */
+  max-width: none; 
+  margin: 0;
+  padding: 1.5rem;
+  text-align: left;
 }
 
 body {
@@ -36,8 +36,6 @@ body {
   background-color: rgb(50, 50, 50);
   border-radius: 8px;
 }
-
-
 
 .banner-title {
   margin: 0;
@@ -108,7 +106,7 @@ body {
 .btn-primary {
   margin: 0.75rem;
   border: 2px solid rgb(45, 190, 210);
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(30, 30, 30);
   border-radius: 8px;
   padding: 0.25rem 0.75rem;
   cursor: pointer;
@@ -184,8 +182,6 @@ body {
   word-break: break-all;
   margin: 0.75rem;
 }
-
-/* Optional utility */
 
 .card {
   padding: 2em;
