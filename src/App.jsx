@@ -34,8 +34,6 @@ function App() {
   const refreshData = async () => {
     await Promise.all([fetchChain(), fetchPending()]);
   };
-
-  // Load chain and pending on start
   useEffect(() => {
     (async () => {
       try {
@@ -79,7 +77,7 @@ function App() {
     }
   };
 
-  // --- Transactions (text-based) ---
+  // --- Transactions ---
 
   const signAndSendTransaction = async (event) => {
     event.preventDefault();
@@ -94,7 +92,6 @@ function App() {
       return;
     }
 
-    // Educational demo: send private key to backend so it signs.
     const body = {
       sender: wallet.public_key,
       recipient: txForm.recipient,
