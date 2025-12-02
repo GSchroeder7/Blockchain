@@ -186,7 +186,7 @@ function App() {
               </div>
             )}
           </section>
-
+          
           {/* New message transaction */}
           <section className="panel">
             <h2 className="panel-heading">New Message Transaction</h2>
