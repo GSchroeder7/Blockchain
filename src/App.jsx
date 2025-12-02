@@ -2,38 +2,56 @@ import React, { useEffect, useState } from "react";
 import GhoseCoin from "./assets/GhoseCoin.png";
 import "./App.css";
 
+// Base URL of our Flask backend API
 const API_BASE = "http://localhost:5000";
 
 function App() {
+  // --- React state hooks for app data ---
+
+  // Full blockchain as returned by /chain
   const [chain, setChain] = useState([]);
+  // List of pending (unmined) transactions from /pending
   const [pending, setPending] = useState([]);
+  // Current wallet (private/public keypair) stored in the UI
   const [wallet, setWallet] = useState({ private_key: "", public_key: "" });
 
+  // Form state for creating a new transaction
   const [txForm, setTxForm] = useState({
     recipient: "",
     message: "",
   });
 
+  // Address that will receive block rewards when mined
   const [minerAddress, setMinerAddress] = useState("");
+
+  // Status line shown at the top to give user feedback
   const [status, setStatus] = useState("");
+
+
 
   // --- Data fetch helpers ---
 
+  // Fetch the full blockchain from the backend
   const fetchChain = async () => {
     const res = await fetch(`${API_BASE}/chain`);
     const data = await res.json();
+    // Only store the chain array, not the whole response object
     setChain(data.chain);
   };
 
+  // Fetch list of pending transactions from the backend
   const fetchPending = async () => {
     const res = await fetch(`${API_BASE}/pending`);
     const data = await res.json();
     setPending(data);
   };
 
+  // Convenience function that refreshes both chain and pending in parallel
   const refreshData = async () => {
     await Promise.all([fetchChain(), fetchPending()]);
   };
+
+  // On first render, load initial blockchain + pending transactions
   useEffect(() => {
     (async () => {
       try {
@@ -46,8 +64,12 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
+
   // --- Wallet ---
 
+  // Ask backend to generate a new wallet (keypair),
+  // then store it in state and set the miner address.
   const handleNewWallet = async () => {
     try {
       const res = await fetch(`${API_BASE}/wallets/new`);
@@ -58,17 +80,20 @@ function App() {
 
       const data = await res.json();
 
+      // Make sure server returned what we expect
       if (!data.private_key || !data.public_key) {
         setStatus("Server returned invalid wallet data");
         console.error("Wallet response:", data);
         return;
       }
 
+      // Save the keys in component state (so user can see/copy them)
       setWallet({
         private_key: data.private_key,
         public_key: data.public_key,
       });
 
+      // Automatically use this wallet’s public key as the miner address
       setMinerAddress(data.public_key);
       setStatus("New wallet generated!");
     } catch (err) {
@@ -77,21 +102,27 @@ function App() {
     }
   };
 
+
+
   // --- Transactions ---
 
+  // Handles the "New Message Transaction" form submit
   const signAndSendTransaction = async (event) => {
     event.preventDefault();
 
+    // Require a wallet before sending a transaction
     if (!wallet.private_key || !wallet.public_key) {
       setStatus("Generate a wallet first.");
       return;
     }
 
+    // Require recipient and message to be filled out
     if (!txForm.recipient || !txForm.message) {
       setStatus("Fill out recipient and message.");
       return;
     }
 
+    // Body is sent to backend and sign using private_key
     const body = {
       sender: wallet.public_key,
       recipient: txForm.recipient,
@@ -106,19 +137,25 @@ function App() {
     });
 
     if (!res.ok) {
+      // If backend returns an error, display it to the user
       const err = await res.json();
       setStatus(`Transaction failed: ${err.error || "unknown error"}`);
       return;
     }
 
+    // Clear form and refresh list of pending transactions
     setStatus("Transaction submitted");
     setTxForm({ recipient: "", message: "" });
     await fetchPending();
   };
 
+
+
   // --- Mining ---
 
+  // Trigger mining of all current pending transactions into a block
   const handleMine = async () => {
+    // Require a miner address to send the block reward to
     if (!minerAddress) {
       setStatus("Set miner address first (usually your public key).");
       return;
@@ -132,13 +169,18 @@ function App() {
 
     const data = await res.json();
     if (!res.ok) {
+      // Show error from backend if mining failed
       setStatus(`Mining failed: ${data.error || "unknown error"}`);
       return;
     }
 
+    // Let user know which block index was mined upon success
+    // then refresh chain + pending to show the new state.
     setStatus(`Mined block #${data.block.index}`);
     await refreshData();
   };
+
+
 
   // --- Render ---
 
